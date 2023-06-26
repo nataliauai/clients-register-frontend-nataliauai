@@ -45,6 +45,7 @@ export const Div = styled.div`
     font-size: 12px;
   }
   .title1{
+    padding-top: 30px;
     font-size: 25px;
     text-align:center;
   }

@@ -4,11 +4,26 @@ import { Forms } from "../../components/Forms";
 import { Link } from "react-router-dom";
 import { DivTeam } from "./style";
 import { schema } from "./schema";
-import api from "../../services/api";
-import { toast } from "react-toastify";
 import Header from "../../components/Header";
+import { toast } from "react-toastify";
+import api from "../../services/api";
+
 
 export const User = () => {
+  const postUser = async (data) => {
+    try {
+      await api.post(`/`, data);
+      toast.success('Cadastrado com Sucesso!');
+    } catch (error) {
+      if (error.response.data.message == 'User alredy exists') {
+        toast.error('Email já cadastrado!');
+      } else {
+        toast.error(error.response.data.message);
+      }
+      console.error(error);
+    }
+  };
+
   const {
     register,
     handleSubmit,
@@ -17,16 +32,7 @@ export const User = () => {
     resolver: yupResolver(schema),
   });
 
-  function onSubmitFunc(data) {
-    console.log(data);
-    api
-      .post("/", data)
-      .then(() => {
-        // setCardTime([...cardTime]);
-        // toast.success("Time cadastrado com sucesso!");
-      })
-      .catch((err) => toast(err));
-  }
+
 
   return (
     <>
@@ -35,7 +41,7 @@ export const User = () => {
         <div className="contentLogin">
           <h1>Registrar cliente</h1>
 
-          <Forms onSubmit={handleSubmit(onSubmitFunc)}>
+          <Forms onSubmit={handleSubmit(postUser)}>
             <h3>Cadastro de clientes</h3>
 
             <label htmlFor="name">Nome</label>

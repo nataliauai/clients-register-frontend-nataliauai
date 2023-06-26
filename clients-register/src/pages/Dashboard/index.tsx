@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import api from "../../services/api";
@@ -6,7 +7,7 @@ import "./Landing.css";
 
 export const Dashboard = () => {
   // const [cardContact, setContact] = useState([]);
-  const [cardUser, setCardUser] = useState([]);
+  const [cardUser, setCardUser] = useState<any>([]);
 
   useEffect(() => {
     api.get("/").then((res) => {
@@ -16,8 +17,8 @@ export const Dashboard = () => {
   }, []);
 
   // useEffect(() => {
-  //   api.get("/contacts").then((res) => {
-  //     setCardTime(res.data);
+  //   api.get("/contact").then((res) => {
+  //     setContact(res.data);
   //   });
   // }, []);
 
@@ -28,7 +29,7 @@ export const Dashboard = () => {
         <span className="colorBrand">Registro de Clientes </span>
          Cadastre seus clientes e contatos de forma rápida
       </h1>
-    <div className="landDash">
+      <div className="landDash">
       <DivLand>
         <h2>Clientes Cadastrados:</h2>
 
@@ -38,17 +39,9 @@ export const Dashboard = () => {
               <h4 className="name">Nome:{user.name}</h4>
               <h4 className="email">Email:{user.age}</h4>
               <h4 className="phoneNumber">Telefone:{user.phoneNumber}</h4>
-              <h4 className="phoneNumber">Telefone:{user.id}</h4>
+              <h5 className="phoneNumber">UserId:{user.id}</h5>
               <h4>
-              {/* {cardContact.map((user.contacts) => {
-                return(
-                  <li key={user.contacts.id}>
-                    <h4 className="fullName">Nome:{user.contacts.fullName}</h4>
-                    <h4 className="email">Email:{user.contacts.email}</h4>
-                    <h4 className="phoneNumber">Telefone: {user.contacts.phoneNumber}</h4>
-                  </li> */}
-                
-              
+   
               </h4>
             </li>
           );
