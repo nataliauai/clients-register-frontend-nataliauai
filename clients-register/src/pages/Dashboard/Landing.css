@@ -1,0 +1,26 @@
+.landDash{
+    display:flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 50px;
+}
+
+
+.colorBrand{
+    color: #FD377E;
+}
+
+.titleDash{
+    color:rgb(17, 17, 17);
+    margin: 50px;
+    text-align: center;
+}
+@media (max-width: 600px){
+    .landDash {
+        display: block; 
+    }
+    h2{
+        margin: 0;
+    }
+
+}
