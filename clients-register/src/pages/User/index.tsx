@@ -1,3 +1,4 @@
+import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Forms } from "../../components/Forms";
@@ -75,7 +76,7 @@ export const User = () => {
             </button>
 
             <Link to="/contact">
-              <p className="btnregister1" type="submit">
+              <p className="btnregister1">
                 Deseja cadastrar contatos?
               </p>
             </Link>

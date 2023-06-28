@@ -4,23 +4,22 @@ import Header from "../../components/Header";
 import api from "../../services/api";
 import { DivLand } from "./style";
 import "./Landing.css";
+import { IContact } from "../../interfaces";
+import { Card } from "../../components/cardContact";
 
 export const Dashboard = () => {
-  // const [cardContact, setContact] = useState([]);
+
+  const [contacts, setContacts] = useState<IContact[]>([]);
   const [cardUser, setCardUser] = useState<any>([]);
 
   useEffect(() => {
     api.get("/").then((res) => {
       setCardUser(res.data);
+      setContacts(res.data)
 
     });
   }, []);
 
-  // useEffect(() => {
-  //   api.get("/contact").then((res) => {
-  //     setContact(res.data);
-  //   });
-  // }, []);
 
   return (
     <>
@@ -37,15 +36,20 @@ export const Dashboard = () => {
           return (
             <li key={user.id}>
               <h4 className="name">Nome:{user.name}</h4>
-              <h4 className="email">Email:{user.age}</h4>
+              <h4 className="email">Email:{user.email}</h4>
               <h4 className="phoneNumber">Telefone:{user.phoneNumber}</h4>
               <h5 className="phoneNumber">UserId:{user.id}</h5>
-              <h4>
-   
-              </h4>
             </li>
           );
         })}
+         <section>
+            <h2>Contatos</h2>
+            <li>
+              {contacts.map((contact) => (
+                <Card key={contact.id} contact={contact} />
+              ))}
+            </li>
+          </section>
       </DivLand>
       </div>
     </>

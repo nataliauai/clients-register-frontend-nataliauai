@@ -2,8 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Dashboard } from "../pages/Dashboard";
 import { Contacts } from "../pages/Contact";
 import { User } from "../pages/User";
-// import { Jogador } from "../pages/Contact";
-// import { Time } from "../pages/Time";
+import React from "react";
 
 
 const RoutesMain = () => (
